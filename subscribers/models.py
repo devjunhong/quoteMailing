@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Clients(models.Model):
+class Subscribers(models.Model):
   email = models.EmailField() 
   register_date = models.DateField(auto_now_add=True)
   # activation 이메일 보내기 
