@@ -1,5 +1,6 @@
 from django.views.generic import FormView, TemplateView
 from django.shortcuts import render
+from django.urls import reverse_lazy
 
 from subscribers.models import Subscribers
 from subscribers.forms import SubscribeForm
@@ -8,10 +9,11 @@ from subscribers.forms import SubscribeForm
 class HomePageView(FormView):
   form_class = SubscribeForm
   template_name = 'home.html'
-  success_url = 'activation'
+  success_url = reverse_lazy('activation')
 
-  def form_valid(self): 
+  def form_valid(self, form): 
     print('form_valid') 
+    return super().form_valid(form)
 
 
 class ActivationPageView(TemplateView):

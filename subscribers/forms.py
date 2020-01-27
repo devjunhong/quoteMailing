@@ -1,9 +1,19 @@
-from django import forms
+from django.forms import ModelForm
+from .models import Subscribers
 
 
-class SubscribeForm(forms.Form):  
-  name = forms.CharField()
-  message = forms.CharField(widget=forms.Textarea)
+class SubscribeForm(ModelForm):  
+  class Meta: 
+    model = Subscribers
+    exclude = (
+      'register_date',
+      'activate',
+      'subscription',
+    )
+  
+  def is_valid(self):
+    print('is_valid')
+    return True 
   
   def send_email(self):
     print(self.cleaned_data)
