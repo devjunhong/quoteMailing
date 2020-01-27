@@ -13,6 +13,8 @@ class SubscribeForm(ModelForm):
   
   def is_valid(self):
     print('is_valid')
+    print(self.data)
+    print(self)
     return True 
   
   def send_email(self):
